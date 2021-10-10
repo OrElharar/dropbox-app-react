@@ -1,0 +1,89 @@
+.home {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  margin-top: 4rem;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  div {
+    color: $myGreen;
+    font-size: 1.5rem;
+  } 
+}
+.home__title{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div{
+    word-break:  break-all;
+  }
+}
+.img-container{
+  // background: url("../../../images/אקדמיה.png") no-repeat;
+  width: 500px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // left: -75px;
+  img{
+    width: 100%;
+  }
+}
+.home__body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+// .home__together{
+//   background: url("../../../images/משפחה.png") no-repeat;
+//   width: 500px;
+//   height: 250px;
+//   position: relative;
+//   left: -75px;
+// }
+
+// .home__online{
+//   background: url("../../../images/מחשב.png") no-repeat;
+//   width: 500px;
+//   height: 250px;
+//   position: relative;
+//   left: -75px;
+// }
+// .home__study{
+//   background: url("../../../images/לפטופ\ קורס.png") no-repeat;
+//   width: 500px;
+//   height: 250px;
+//   position: relative;
+//   left: -75px;
+// }
+
+.home__body__partial{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width:40rem) {
+  .home__title{
+    margin-top: 3rem;
+    font-size: 3rem;
+  }
+
+  .home__body{
+    flex-direction: row;
+  }
+
+}
+// .home__online
+// .home__study
+// home__together
+// home__online
+// home__study

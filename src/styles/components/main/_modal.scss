@@ -1,0 +1,146 @@
+.backdrop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  // opacity: 0;
+  transition: opacity 500ms ease-out ;
+  top: 0;
+  left: 0;
+  // z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+#modal {
+  display: block;
+  position: fixed;
+  bottom: unset;
+  // opacity: 0;
+  transform: translateY(-10rem);
+  transition: opacity 500ms ease-out, transform 1s ease-out;
+  z-index: 200;
+  top: 40%;
+  // left: 30%;
+  min-width: 40%;
+  max-width: 400px;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.modal__title {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.modal__actions {
+  text-align: center;
+}
+
+.modal__action {
+  border: 1px solid #0e4f1f;
+  background: #0e4f1f;
+  text-decoration: none;
+  color: white;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.modal__action:hover,
+.modal__action:active {
+  background: #2ddf5c;
+  border-color: #2ddf5c;
+}
+
+.modal__action--negative {
+  background: red;
+  border-color: red;
+}
+
+.modal__action--negative:hover,
+.modal__action--negative:active {
+  background: #ff5454;
+  border-color: #ff5454;
+}
+.open{
+  z-index: 100;  
+  opacity: 1;
+}
+.slide{
+  transform: translateY(0)!important;
+  opacity: 1!important;
+}
+
+.close{
+  display: none;
+}
+
+.modal-background {
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(100, 100, 100, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal__body {
+    display: block;
+    min-height: 30%;
+    min-width: 250px;
+    border: 2px solid $myGreen;
+    border-radius: 5px;
+    background: white;
+    padding: 1rem;
+    max-width: 500px;
+
+  
+    textarea {
+      width: 100%;
+      resize: none;
+      padding: 0.5rem;
+    }
+    input{
+        width: 100%;
+        margin-top: 1rem;
+    }
+  
+    button {
+      border: none;
+      color: white;
+      margin: 1rem;
+      border-radius: 5px;
+      background: $myGreen;
+      padding: 0.5rem;
+  
+      &:hover {
+        background: $myLightGreen;
+        cursor: pointer;
+      }
+    }
+    .close-button{
+      background: $myRed;
+    }
+  }
+  
+  .buttons-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @media (min-width:40rem) {
+   
+  }
+  
+  
+  
