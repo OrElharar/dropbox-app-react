@@ -7,6 +7,7 @@ export const userLoginToSite = async (email, password) => {
         const url = DB_URL + "/users/login"
         const res = await fetch(url, {
             method: "POST",
+            mode: "no-cors",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -28,6 +29,7 @@ export const userSigninToSite = async (reqBody) => {
         const url = DB_URL + "/users"
         const res = await fetch(url, {
             method: "POST",
+            mode: "no-cors",
             headers: {
                 'Content-Type': 'application/json',
             },
