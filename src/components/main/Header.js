@@ -5,6 +5,9 @@ import { deleteUserFromCookie } from "../../cookies/cookies";
 import { userLogoutAction } from "../../actions/loginActions";
 import { LoginContext } from "../../contexts/LoginContext";
 import { userLogoutFromSite } from "../../server/auth";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
 // import { deleteUserFromCookie } from "../../cookies/cookies";
 
 
@@ -66,8 +69,8 @@ const Header = () => {
                     }
 
                 </div>
-                <label className="check-bar">
-                    <i className="fas fa-bars header__nav__check" onClick={onClickNavCheckBox}></i>
+                <label className="check-bar" onClick={onClickNavCheckBox}>
+                    <FontAwesomeIcon icon={faBars} />
                 </label>
 
             </div>
