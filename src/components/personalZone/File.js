@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faFilePdf, faFile, faDownload } from '@fortawesome/free-solid-svg-icons';
 
 import { LoginContext } from '../../contexts/LoginContext';
-import { deleteFile, getFileFromDB, getUserFilesFromDB } from '../../server/db';
+import { deleteFile, getUserFilesFromDB } from '../../server/db';
 
 
 const File = ({ file, setFiles }) => {
@@ -23,13 +23,6 @@ const File = ({ file, setFiles }) => {
     }
 
     const onClickDownload = () => {
-        // getFileFromDB(userData.token, file.key, file.originalName)
-        //     .then((res) => {
-        //         // res.blob()
-        //         console.log({ res });
-        //     }).catch((err) => {
-        //         console.log({ err });
-        //     })
         window.location.href = DOWNLOAD_URL
     }
 
