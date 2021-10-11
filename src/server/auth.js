@@ -1,10 +1,18 @@
 import { getUserFromCookie } from "../cookies/cookies";
+// import Axios from "axios";
+
 // const DB_URL = process.env.REACT_APP_PORT;
 const DB_URL = "http://dropboxapiv2-env.eba-ihvpemty.eu-west-1.elasticbeanstalk.com";
 export const userLoginToSite = async (email, password) => {
     console.log({ email, password });
     try {
         const url = DB_URL + "/users/login"
+        // const res = await Axios.post(url + `/upload-file`, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     data: { email, password }
+        // });
         const res = await fetch(url, {
             method: "POST",
             headers: {
@@ -13,6 +21,7 @@ export const userLoginToSite = async (email, password) => {
             body: JSON.stringify({ email, password })
         });
         const data = await res.json()
+        // console.log({ data: res.data });
         return data
         //REACT_APP_LOGIN
     } catch (err) {

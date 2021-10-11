@@ -9,6 +9,7 @@ const PersonalZone = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [personalFiles, setPersonalFiles] = useState([]);
     const { userData } = useContext(LoginContext);
+    console.log({ userData });
     useEffect(() => {
         let isComponentExist = true
         getUserFilesFromDB(userData.token)
