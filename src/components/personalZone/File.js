@@ -13,7 +13,10 @@ const File = ({ file, setFiles }) => {
     // const URL = "http://dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
 
     const { userData } = useContext(LoginContext);
-    const DOWNLOAD_URL = `http://localhost:4000/get-file?key=${file.key}&name=${file.originalName}&token=${userData.token}`;
+
+    // const DOWNLOAD_URL = `http://localhost:4000/get-file?key=${file.key}&name=${file.originalName}&token=${userData.token}`;
+    const DOWNLOAD_URL = `http://dropboxapiv2-env.eba-ihvpemty.eu-west-1.elasticbeanstalk.com/get-file?key=${file.key}&name=${file.originalName}&token=${userData.token}`;
+
 
     const onClickDeleteFile = (id, key) => {
         deleteFile(id, key)

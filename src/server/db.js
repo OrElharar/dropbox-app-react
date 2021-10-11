@@ -1,6 +1,6 @@
 import Axios from "axios";
-const DB_URL = process.env.REACT_APP_PORT;
-// const DB_URL = "http://dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
+// const DB_URL = process.env.REACT_APP_PORT;
+const DB_URL = "http://dropboxapiv2-env.eba-ihvpemty.eu-west-1.elasticbeanstalk.com";
 
 export const getUserFilesFromDB = async (token) => {
     try {
