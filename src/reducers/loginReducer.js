@@ -7,13 +7,9 @@ export const userDataInitialState = { user: defaultUserValue, token: defaultToke
 
 const loginReducer = (userData, action) => {
     switch (action.type) {
-        case "LOGIN_STUDENT":
-            return { user: { student: { ...action.student } }, token: action.token };
-        case "LOGOUT_STUDENT":
-            return { user: null, token: "" };
-        case "LOGIN_INSTRUCTOR":
-            return { user: { instructor: { ...action.instructor } }, token: action.token };
-        case "LOGOUT_INSTRUCTOR":
+        case "LOGIN_USER":
+            return { user: { user: { ...action.user } }, token: action.token };
+        case "LOGOUT_USER":
             return { user: null, token: "" };
 
         default:

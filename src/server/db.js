@@ -1,6 +1,6 @@
 import Axios from "axios";
-// const DB_URL = process.env.REACT_APP_PORT;
-const DB_URL = "Dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
+const DB_URL = process.env.REACT_APP_PORT;
+// const DB_URL = "http://dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
 
 export const getUserFilesFromDB = async (token) => {
     try {
@@ -47,3 +47,20 @@ export const deleteFile = async (id, key) => {
         console.log(err);
     }
 }
+
+export const getFileFromDB = async (token, key, originalName) => {
+    try {
+        const res = await Axios.get(DB_URL + `/get-file?key=${key}&name=${originalName}`, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                "Authorization": "Bearer " + token
+            }
+        });
+        if (res.status === 500 || res.status === 400 || res.status === 404) {
+            throw res
+        }
+        return res.data;
+    } catch (err) {
+        throw (err)
+    }
+};

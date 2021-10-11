@@ -4,19 +4,25 @@ import { NavLink, useHistory } from "react-router-dom";
 import { deleteUserFromCookie } from "../../cookies/cookies";
 import { userLogoutAction } from "../../actions/loginActions";
 import { LoginContext } from "../../contexts/LoginContext";
+import { userLogoutFromSite } from "../../server/auth";
 // import { deleteUserFromCookie } from "../../cookies/cookies";
 
 
 const Header = () => {
     const { userData, dispatchUserData } = useContext(LoginContext);
-    // console.log({ userData });
     const history = useHistory();
     const [headerNavClass, setHeaderNavClass] = useState("header__nav__dropdown");
     const onClickLogout = () => {
+        dispatchUserData(userLogoutAction())
+
         changeNavDropdownState()
-        dispatchUserData(userLogoutAction());
-        deleteUserFromCookie()
-        history.push("/home");
+        userLogoutFromSite()
+            .then(() => {
+                dispatchUserData(userLogoutAction());
+                deleteUserFromCookie()
+                history.push("/home");
+            })
+
     };
 
     const onClickNavCheckBox = () => {

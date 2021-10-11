@@ -1,8 +1,10 @@
 import { getUserFromCookie } from "../cookies/cookies";
+const DB_URL = process.env.REACT_APP_PORT;
+// const DB_URL = "http://dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
 
 export const userLoginToSite = async (email, password) => {
     try {
-        const url = process.env.REACT_APP_PORT + "/users/login"
+        const url = DB_URL + "/users/login"
         const res = await fetch(url, {
             method: "POST",
             headers: {
@@ -21,11 +23,33 @@ export const userLoginToSite = async (email, password) => {
     }
 }
 
+export const userSigninToSite = async (reqBody) => {
+    try {
+        const url = DB_URL + "/users"
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reqBody)
+        });
+        const data = await res.json()
+        return data
+        //REACT_APP_LOGIN
+    } catch (err) {
+        if (err.response != null && err.response.status === 400) {
+            // console.log(err.response.data.error.message);
+            throw new Error("Email or Password are invalid.")
+        }
+    }
+}
 
+// 
 
 export const userLogoutFromSite = async () => {
     try {
-        const url = process.env.REACT_APP_PORT + "/users/logout"
+        console.log("Logout");
+        const url = DB_URL + "/users/logout"
         const res = await fetch(url, {
             method: "POST",
             headers: {

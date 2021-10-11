@@ -2,3 +2,44 @@
     position: relative;
     top: 4.5rem;
 }
+.add-new-file-section{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+.title{
+    margin: 1rem;
+}
+.file-container{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    svg{
+        height: 30px;
+        width: 30px !important;
+        cursor: pointer;
+    }
+}
+
+.file-options{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media (min-width:40rem) {
+    .title{
+        font-size: 2rem;
+    }
+    .add-new-file-section{
+        justify-content: space-around;
+    }
+   .file-container svg{
+       margin: 0 5rem;
+       height: 60px;
+       width: 60px !important;
+   }
+}

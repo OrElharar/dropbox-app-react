@@ -10,6 +10,7 @@ import LoginContextProvider from '../contexts/LoginContext';
 import PrivateRoute from './PrivateRoute';
 import LoginRoute from './LoginRoute';
 import PersonalZone from '../components/personalZone/PersonalZone';
+import SubscribePage from '../components/subscribePage/SubscribePage';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -21,6 +22,7 @@ const AppRouter = () => (
                 </Route>
                 <Route path="/home" component={Home} />
                 <LoginRoute path="/login" component={LoginPage} />
+                <LoginRoute path="/register" component={SubscribePage} />
                 <PrivateRoute path="/personal-zone" component={PersonalZone} />
                 <Route path="/404" component={PageNotFound} />
             </Switch>

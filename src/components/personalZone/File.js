@@ -1,12 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { faImage } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faFilePdf, faFile, faDownload } from '@fortawesome/free-solid-svg-icons';
+
 import { LoginContext } from '../../contexts/LoginContext';
-import { deleteFile, getUserFilesFromDB } from '../../server/db';
+import { deleteFile, getFileFromDB, getUserFilesFromDB } from '../../server/db';
 
 
 const File = ({ file, setFiles }) => {
-    // const URL = "http://localhost:4000/get-file";
-    const URL = "Dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com/get-file"
+    // const [isUserDownloadedFile, setIsUserDownloadedFile] = useState(false);
+    const fileType = file.originalName.split(".")[1];
+    // const URL = "http://dropboxapiv1-env.eba-k9xybkux.eu-west-1.elasticbeanstalk.com";
+
     const { userData } = useContext(LoginContext);
+    const DOWNLOAD_URL = `http://localhost:4000/get-file?key=${file.key}&name=${file.originalName}&token=${userData.token}`;
 
     const onClickDeleteFile = (id, key) => {
         deleteFile(id, key)
@@ -14,15 +21,37 @@ const File = ({ file, setFiles }) => {
             .then((newFiles) => { setFiles(newFiles) })
             .catch((err) => { console.log({ err }); })
     }
+
+    const onClickDownload = () => {
+        // getFileFromDB(userData.token, file.key, file.originalName)
+        //     .then((res) => {
+        //         // res.blob()
+        //         console.log({ res });
+        //     }).catch((err) => {
+        //         console.log({ err });
+        //     })
+        window.location.href = DOWNLOAD_URL
+    }
+
     return (
         <div className="file-container">
-            <h3>{file.originalName}</h3>
-            <img
-                src={`${URL}?key=${file.key}&name=${file.originalName}&token=${userData.token}`}
-                alt={file.originalName}
-            />
-            <iframe title={file.id} className="file" width="100%" height="50" src={`https://docs.google.com/gview?url=${`${URL}?key=${file.key}&name=${file.originalName}&token=${userData.token}`}&embedded=true`}></iframe>
-            <button onClick={() => { onClickDeleteFile(file.id, file.key) }}>Delete</button>
+            <div>
+                <h3>{file.originalName}</h3>
+            </div>
+            <div className="file-options">
+
+
+                {fileType === "jpg" && <FontAwesomeIcon icon={faImage} />}
+                {fileType === "pdf" && <FontAwesomeIcon icon={faFilePdf} />}
+                {fileType !== "pdf" && fileType !== "jpg" && <FontAwesomeIcon icon={faFile} />}
+                <div onClick={onClickDownload}>
+                    <FontAwesomeIcon icon={faDownload} />
+                </div>
+                <span onClick={() => { onClickDeleteFile(file.id, file.key) }}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </span>
+            </div>
+            {/* {isUserDownloadedFile && <i src={URL + `/get-file?key=${file.key}&name=${file.originalName}`} />} */}
         </div>
     );
 }
