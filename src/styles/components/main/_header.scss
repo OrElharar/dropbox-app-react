@@ -19,6 +19,8 @@
     @extend %a-nav;
   }
 
+
+
   .home-nav {
     font-weight: 700;
     display: flex;
@@ -61,6 +63,11 @@
   display: none;
 }
 
+.check-bar svg{
+  margin: 1rem;
+  color: white;
+}
+
 @media (min-width: 40rem) {
   .header__nav__check{
     display: none;
@@ -79,6 +86,11 @@
     padding-top: unset;
     display: flex;
 
+  }
+
+  .check-bar{
+    display: none;
+    
   }
   
 }
